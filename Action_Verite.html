@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Action ou Vérité 🔥</title>
+  <style>
+    body {
+      background-color: #0A0F27;
+      color: #FCF6F3;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 50px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      color: #12769E;
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    select, button {
+      margin: 15px;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    select {
+      background-color: #043715;
+      color: #FCF6F3;
+      width: 250px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #001952;
+      color: #FCF6F3;
+      font-size: 1.2em;
+    }
+
+    button:hover {
+      background-color: #12769E;
+      transform: scale(1.1);
+    }
+
+    #resultat {
+      margin-top: 40px;
+      font-size: 24px;
+      color: #FCF6F3;
+      font-weight: bold;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .container {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      select, button {
+        font-size: 16px;
+        padding: 12px 20px;
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      select, button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Action ou Vérité</h1>
+    <p>Choisis ton niveau, puis Action ou Vérité</p>
+
+    <select id="niveau">
+      <option value="soft">Soft 😇</option>
+      <option value="hot">Hot 😏</option>
+      <option value="x">X 🔥</option>
+    </select><br>
+
+    <button onclick="jouer('verite')">Vérité</button>
+    <button onclick="jouer('action')">Action</button>
+
+    <div id="resultat"></div>
+  </div>
+
+  <script>
+    const questions = {
+      soft: {
+        verite: [
+          "As-tu déjà triché à un examen ?",
+          "Quel est ton plus gros mensonge ?",
+          "As-tu un talent caché ?",
+          "As-tu déjà volé quelque chose ?",
+          "Qui est la personne que tu admires le plus ici ?",
+          "As-tu déjà eu un coup de cœur pour un(e) prof ?",
+          "Quel est ton plus gros secret inavouable ?",
+          "As-tu déjà menti pour éviter un rendez-vous amoureux ?",
+          "As-tu déjà eu des pensées coquines en classe ?",
+          "Avec qui ici tu pourrais flirter sérieusement ?",
+          "As-tu déjà eu un rêve coquin sur un(e) ami(e) ?",
+          "Avec combien de personnes as-tu déjà embrassé ?",
+          "Quel est ton plus grand fantasme ?",
+          "As-tu déjà envoyé un message ou une photo que tu regrettes ?",
+          "Quelle est la partie de ton corps que tu préfères chez toi ?",
+          "As-tu déjà eu un crush pour quelqu’un ici ?",
+          "As-tu déjà fait semblant d’avoir un orgasme ?",
+          "À quelle fréquence penses-tu au sexe ?",
+          "Quelle est la chose la plus coquine que tu aies faite ?",
+          "As-tu déjà été tenté(e) par un(e) ami(e) en couple ?",
+          "Ton endroit préféré pour t’embrasser ?",
+          "As-tu déjà regardé quelque chose de très... spicy 👀 ?",
+          "Raconte ton moment le plus gênant en amour.",
+          "As-tu déjà été infidèle ?",
+          "Est-ce que tu t’es déjà envoyé des sextos ?"
+      
+        ],
+        action: [
+          "Fais 10 pompes.",
+          "Danse pendant 15 secondes sans musique.",
+          "Dis l’alphabet à l’envers.",
+          "Fais un compliment à chaque joueur.",
+          "Change ta voix et parle comme un robot pendant 2 tours."
+        ]
+      },
+      hot: {
+        verite: [
+          "Quel est ton plus gros fantasme ?",
+          "As-tu déjà eu une relation d’un soir ?",
+          "À quel âge as-tu eu ton premier baiser ?",
+          "Quelle est la partie de ton corps préférée ?",
+          "Avec qui ici tu flirterais ?"
+        ],
+        action: [
+          "Fais un regard sexy à la personne de ton choix.",
+          "Enlève un accessoire ou un vêtement.",
+          "Fais une déclaration d’amour à quelqu’un ici.",
+          "Envoie un emoji coquin à quelqu’un dans tes contacts.",
+          "Montre ton historique YouTube sans tricher !"
+        ]
+      },
+      x: {
+        verite: [
+          "As-tu déjà eu une relation à trois ?",
+          "Quelle est ta position préférée ?",
+          "As-tu déjà filmé un moment intime ?",
+          "Combien de fois par semaine penses-tu au sexe ?",
+          "Avec combien de personnes as-tu couché ?"
+        ],
+        action: [
+          "Montre un endroit de ton corps que personne ne voit d'habitude.",
+          "Mime une scène de film chaud avec ta main.",
+          "Écris le prénom de quelqu’un avec ta langue en l’air.",
+          "Fais une danse sensuelle (ou sexy) pendant 20 secondes.",
+          "Chuchote à quelqu’un ce que tu aimerais lui faire si vous étiez seuls.",
+          "Chante une chanson sexy comme si tu étais sur scène.",
+          "Simule un bisou avec ta main... passionnément 😘",
+          "Dis à quelqu’un ici un secret très gênant.",
+          "Envoie un cœur 💓 à la 3e personne de ta liste de contacts.",
+          "Fais un regard de séducteur/trice pendant 15 secondes à quelqu’un.",
+          "Fais un bisou sur la joue de la personne à ta gauche.",
+          "Fais une imitation sexy d’un animal pendant 10 secondes.",
+          "Choisis quelqu’un ici et dis-lui ce que tu voudrais lui faire si vous étiez seuls 😏.",
+          "Enlève un vêtement OU réponds à une question très perso.",
+          "Chuchote quelque chose de chaud à l’oreille de quelqu’un.",
+          "Fais une danse sexy pendant 15 secondes.",
+          "Laisse quelqu’un te poser n’importe quelle question… et tu dois répondre.",
+          "Envoie un “tu me manques 😘” à quelqu’un au hasard dans tes contacts.",
+          "Dis à voix haute ce que tu portes en dessous 👀.",
+          "Mime ta meilleure scène de flirt.",
+          "Roule une chaise et fais un strip-tease... à la chaise ! 😅",
+          "Choisis deux personnes et fais-les se regarder intensément pendant 20 secondes.",
+          "Écris un mot coquin sur le bras de quelqu’un avec ton doigt.",
+          "Montre la dernière recherche dans ton historique Google.",
+          "Fais une déclaration d’amour ridicule à ton verre ou ta chaussure."
+        ]
+      }
+    };
+
+    function jouer(type) {
+      const niveau = document.getElementById('niveau').value;
+      const liste = questions[niveau][type];
+      const choix = liste[Math.floor(Math.random() * liste.length)];
+      document.getElementById('resultat').innerText = choix;
+    }
+  </script>
+</body>
+</html>
